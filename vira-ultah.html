@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Selamat Ulang Tahun Vira! 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffc2d1 50%, #ffb3c6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== Falling Balloons ===== */
+        .balloons-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            top: -120px;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+            opacity: 0.85;
+            animation: fallBalloon linear infinite;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 12px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes fallBalloon {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(120vh) rotate(360deg); }
+        }
+
+        /* ===== Floating Hearts ===== */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            animation: floatUp linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
+        }
+
+        /* ===== Confetti ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            top: -20px;
+            animation: confettiFall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(720deg); }
+        }
+
+        /* ===== Main Card ===== */
+        .card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .emoji-cake {
+            font-size: 60px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        .title {
+            font-size: 2.2rem;
+            color: #d6336c;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .name {
+            font-size: 1.8rem;
+            color: #ff6b9d;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        .date {
+            display: inline-block;
+            margin-top: 10px;
+            background: #ff6b9d;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ===== Cake ===== */
+        .cake-section {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 180px;
+        }
+
+        .plate {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 18px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        .layer-bottom {
+            bottom: 15px;
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(180deg, #ff8fab, #ff6b9d);
+        }
+
+        .layer-middle {
+            bottom: 65px;
+            width: 160px;
+            height: 55px;
+            background: linear-gradient(180deg, #ffb3c6, #ff8fab);
+            z-index: 2;
+        }
+
+        .layer-top {
+            bottom: 110px;
+            width: 120px;
+            height: 45px;
+            background: linear-gradient(180deg, #ffc2d1, #ffb3c6);
+            z-index: 3;
+        }
+
+        .icing {
+            position: absolute;
+            bottom: 138px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            font-size: 18px;
+            color: #fff;
+            display: flex;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .candles {
+            position: absolute;
+            bottom: 148px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 5;
+        }
+
+        .candle {
+            width: 8px;
+            height: 30px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff6b9d,
+                #ff6b9d 5px,
+                #fff 5px,
+                #fff 10px
+            );
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .flame {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 22px;
+            background: radial-gradient(circle, #ffd166 0%, #ff9f43 60%, transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 0.3s infinite alternate;
+        }
+
+        .flame-2 { animation-delay: 0.1s; }
+        .flame-3 { animation-delay: 0.2s; }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.2, 0.9); opacity: 0.8; }
+        }
+
+        /* ===== Message ===== */
+        .message {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #ff8fab;
+        }
+
+        .message h3 {
+            color: #d6336c;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .message p {
+            color: #6b4a5a;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-style: italic;
+            color: #ff6b9d !important;
+            font-weight: 600;
+        }
+
+        /* ===== Wish Button ===== */
+        .wish-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: #fff;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .wish-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 107, 157, 0.5);
+        }
+
+        /* ===== Wish Modal ===== */
+        .wish-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: linear-gradient(135deg, #fff, #ffd6e8);
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popIn 0.4s ease;
+        }
+
+        .modal-box h3 {
+            color: #d6336c;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-box p {
+            color: #6b4a5a;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #d6336c;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            margin-top: 25px;
+            color: #d6336c;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            .card { padding: 25px 15px; }
+            .title { font-size: 1.7rem; }
+            .name { font-size: 1.4rem; }
+            .cake { transform: scale(0.85); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling Balloons -->
+    <div class="balloons-container" id="balloons"></div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Confetti -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Main Content -->
+    <main class="card">
+        <header class="header">
+            <span class="emoji-cake">🎂</span>
+            <h1 class="title">Happy Birthday</h1>
+            <h2 class="name">Vira Natasya 💖</h2>
+            <p class="date">10 November</p>
+        </header>
+
+        <section class="cake-section">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="candles">
+                    <div class="candle"><div class="flame flame-1"></div></div>
+                    <div class="candle"><div class="flame flame-2"></div></div>
+                    <div class="candle"><div class="flame flame-3"></div></div>
+                </div>
+                <div class="icing">
+                    <span>♡</span><span>♡</span><span>♡</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="message">
+            <h3>Untuk Pacar Tersayang 💌</h3>
+            <p>
+                Selamat ulang tahun, Viraku sayang! 🎉
+                Semoga di hari yang spesial ini, kamu dikasih
+                kebahagiaan, kesehatan, sama semua impian yang kamu impiin terwujut yaa sayanngg❤️.
+                makasihh yaa sudah jadi orang yang selaluu ada buatt tata.
+                tataa sayang kamu dari apapunn. 💖
+            </p>
+            <p class="signature">Dari Tata, pacar tersayangmu 🥰</p>
+        </section>
+
+        <button class="wish-btn" onclick="showWish()">💌 Klik untuk Ucapan</button>
+        <div class="wish-modal" id="wishModal">
+            <div class="modal-box">
+                <span class="modal-close" onclick="closeWish()">&times;</span>
+                <h3>🌷 Untuk Viraku 🌷</h3>
+                <p>
+                    "dii harii inii semogaa kamu jadi perempuan yang selalu bahagia yaa syangg
+                    sama kamu harus nurut sama mamaa kamu ya sayanng
+                    semogaaa kamu tetep jadi vira yang tata kenal ya sayanng
+                    semogaa kamuu selaluu jaga kesehataann yaa sayanngg
+                    semogaa jugaa kitaa selaluu samaa samaa terusss yaa sayangg
+                    tataa sayangg kamuuuu selamaanyaaaaaaaaaaaaaaa
+                    mmmmmuuuuuuuuaaaaaaaccccccccchhhhhhhh💕😍💐❤️".
+                </p>
+                <p class="signature">— Tata, yang selalu support kamuu💕</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Dibuat dengan ❤️ khusus untuk Vira Natasya</p>
+        </footer>
+    </main>
+
+    <script>
+        // Falling Balloons
+        const balloonColors = ['#ff6b9d', '#ff8fab', '#ffb3c6', '#ffc2d1', '#ffa8c8'];
+        const balloonContainer = document.getElementById('balloons');
+        for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+            balloon.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            balloon.style.animationDelay = Math.random() * 10 + 's';
+            balloonContainer.appendChild(balloon);
+        }
+
+        // Floating Hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Confetti
+        const confettiColors = ['#ff6b9d', '#ffd166', '#ff8fab', '#6c5ce7', '#00b894', '#ffb3c6'];
+        const confettiContainer = document.getElementById('confetti');
+        for (let i = 0; i < 80; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'confetti-piece';
+            piece.style.left = Math.random() * 100 + 'vw';
+            piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            piece.style.width = Math.random() * 10 + 5 + 'px';
+            piece.style.height = Math.random() * 10 + 5 + 'px';
+            piece.style.animationDuration = (Math.random() * 5 + 4) + 's';
+            piece.style.animationDelay = Math.random() * 8 + 's';
+            confettiContainer.appendChild(piece);
+        }
+
+        // Wish Modal
+        function showWish() {
+            document.getElementById('wishModal').style.display = 'flex';
+        }
+        function closeWish() {
+            document.getElementById('wishModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
