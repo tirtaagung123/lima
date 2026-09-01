@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Selamat Ulang Tahun Vira! 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Falling Balloons -->
+    <div class="balloons-container" id="balloons"></div>
+
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Confetti -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Main Content -->
+    <main class="card">
+        <header class="header">
+            <span class="emoji-cake">🎂</span>
+            <h1 class="title">Happy Birthday</h1>
+            <h2 class="name">Vira Natasya 💖</h2>
+            <p class="date">10 November</p>
+        </header>
+
+        <section class="cake-section">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="candles">
+                    <div class="candle">
+                        <div class="flame flame-1"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame flame-2"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame flame-3"></div>
+                    </div>
+                </div>
+                <div class="icing">
+                    <span>♡</span><span>♡</span><span>♡</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="message">
+            <h3>Untuk Pacar Tersayang 💌</h3>
+            <p>
+                 Selamat ulang tahun, Viraku sayang! 🎉
+                Semoga di hari yang spesial ini, kamu dikasih
+                kebahagiaan, kesehatan, sama semua impian yang kamu impiin terwujut yaa sayanngg❤️.
+                makasihh yaa sudah jadi orang yang selaluu ada buatt tata.
+                tataa sayang kamu dari apapunn. 💖
+            </p>
+            <p class="signature">Dari Tata, pacar tersayangmu 🥰</p>
+        </section>
+
+        <button class="wish-btn" onclick="showWish()">💌 Klik untuk Ucapan</button>
+        <div class="wish-modal" id="wishModal">
+            <div class="modal-box">
+                <span class="modal-close" onclick="closeWish()">&times;</span>
+                <h3>🌸 Untuk Viraku 🌸</h3>
+                <p>
+                    "dii harii inii semogaa kamu jadi perempuan yang selalu bahagia yaa syangg
+                    sama kamu harus nurut sama mamaa kamu ya sayanng
+                    semogaaa kamu tetep jadi vira yang tata kenal ya sayanng
+                    semogaa kamuu selaluu jaga kesehataann yaa sayanngg
+                    semogaa jugaa kitaa selaluu samaa samaa terusss yaa sayangg
+                    tataa sayangg kamuuuu selamaanyaaaaaaaaaaaaaaa
+                    mmmmmuuuuuuuuaaaaaaaccccccccchhhhhhhh💕😍💐❤️".
+                </p>
+                <p class="signature">— Tata, yang selalu mencintaimu</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Dibuat dengan ❤️ khusus untuk Vira Natasya</p>
+        </footer>
+    </main>
+
+    <script>
+        // Falling Balloons
+        const balloonColors = ['#ff6b9d', '#ff8fab', '#ffb3c6', '#ffc2d1', '#ffa8c8'];
+        const balloonContainer = document.getElementById('balloons');
+        for (let i = 0; i < 20; i++) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+            balloon.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            balloon.style.animationDelay = Math.random() * 10 + 's';
+            balloonContainer.appendChild(balloon);
+        }
+
+        // Floating Hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Confetti
+        const confettiColors = ['#ff6b9d', '#ffd166', '#ff8fab', '#6c5ce7', '#00b894', '#ffb3c6'];
+        const confettiContainer = document.getElementById('confetti');
+        for (let i = 0; i < 80; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'confetti-piece';
+            piece.style.left = Math.random() * 100 + 'vw';
+            piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            piece.style.width = Math.random() * 10 + 5 + 'px';
+            piece.style.height = Math.random() * 10 + 5 + 'px';
+            piece.style.animationDuration = (Math.random() * 5 + 4) + 's';
+            piece.style.animationDelay = Math.random() * 8 + 's';
+            confettiContainer.appendChild(piece);
+        }
+
+        // Wish Modal
+        function showWish() {
+            document.getElementById('wishModal').style.display = 'flex';
+        }
+        function closeWish() {
+            document.getElementById('wishModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
